@@ -1,7 +1,7 @@
 Docker Tranquility
 ==================
 
-[![Docker Build Status](https://img.shields.io/docker/build/rusnyder/tranquility.svg)][dockerhub]
+[![Build Status](https://travis-ci.org/rusnyder/docker-tranquility.svg?branch=master)][travis]
 [![Docker Image Stats](https://images.microbadger.com/badges/image/rusnyder/tranquility.svg)](https://microbadger.com/images/rusnyder/tranquility)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rusnyder/tranquility.svg)][dockerhub]
 
@@ -10,6 +10,7 @@ Tags:
 - latest ([Dockerfile](https://github.com/rusnyder/docker-tranquility/blob/master/Dockerfile))
 
 [dockerhub]: https://hub.docker.com/r/rusnyder/tranquility
+[travis]: https://travis-ci.org/rusnyder/docker-tranquility
 
 
 What is Tranqulity?
