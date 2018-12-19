@@ -1,0 +1,43 @@
+sudo: required
+
+services:
+  - docker
+
+# This version will be also tagged as 'latest'
+env:
+  global:
+    - LATEST="0.8.3"
+
+# Builds released versions from: https://github.com/druid-io/tranquility
+matrix:
+  include:
+  - env: TRANQUILITY_VERSION=0.8.3
+  - env: TRANQUILITY_VERSION=0.8.2
+  - env: TRANQUILITY_VERSION=0.8.1
+  - env: TRANQUILITY_VERSION=0.8.0
+
+install:
+  - docker --version
+  - docker-compose --version
+  - echo "TRANQUILITY VERSION  $TRANQUILITY_VERSION"
+  - echo "LATEST VERSION $LATEST"
+  - export CURRENT=${TRANQUILITY_VERSION}
+  - docker build
+    --build-arg tranqulity_version=${TRANQUILITY_VERSION}
+    --build-arg vcs_ref=$TRAVIS_COMMIT
+    --build-arg build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    -t rusnyder/tranquility .
+
+# This will deploy from master. Might want to have a single release branch for a little more control
+deploy:
+  - provider: script
+    script: bash docker_push latest
+    on:
+      repo: rusnyder/docker-tranquility
+      branch: master
+      condition: $CURRENT = $LATEST
+  - provider: script
+    script: bash docker_push "${TRANQUILITY_VERSION}"
+    on:
+      repo: rusnyder/docker-tranquility
+      # branch: release

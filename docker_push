@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+BASE_IMAGE="rusnyder/docker-tranquility"
+IMAGE_VERSION="$1"
+
+if [ -z "$IMAGE_VERSION" ]; then
+  echo "No IMAGE_VERSION var specified"
+  exit 1
+fi
+
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+TARGET="$BASE_IMAGE:$IMAGE_VERSION"
+docker tag "$BASE_IMAGE" "$TARGET"
+docker push "$TARGET"
