@@ -39,4 +39,5 @@ if [ -n "$TRANQUILITY_CONFIG_FILE" ]; then
   echo "Running with config: $(jq --compact-output . < "$TRANQUILITY_CONFIG_FILE")"
 fi
 
-"${INSTALL_DIR}/bin/tranquility" server "$CONF"
+# shellcheck disable=SC2086
+"${INSTALL_DIR}/bin/tranquility" server $CONF

@@ -18,6 +18,7 @@ LABEL org.label-schema.name="tranquility" \
 # Default runtime config
 ENV TRANQUILITY_PROPERTIES_ZOOKEEPER_CONNECT    zookeeper
 ENV TRANQUILITY_PROPERTIES_HTTP_PORT            8200
+ENV TRANQUILITY_CONFIG_FILE                     conf/tranquility/config.json
 
 # Install
 RUN apk update \
