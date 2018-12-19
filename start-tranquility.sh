@@ -22,6 +22,7 @@ if [ -n "$TRANQUILITY_CONFIG_FILE" ]; then
       | sed -e 's/TRANQUILITY_PROPERTIES_//' \
       | tr '[:upper:]' '[:lower:]' \
       | tr '_' '.')"
+    # shellcheck disable=SC2001
     val="$(echo "$var" | sed -e 's/^[^=]\+=//')"
     jq_exp="${jq_exp}.properties[\"$key\"] = \"$val\""
   done
