@@ -28,6 +28,10 @@ install:
     --build-arg build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
     -t rusnyder/tranquility .
 
+script:
+  # Shellcheck main source files
+  - shellcheck -s bash start-tranquility.sh
+
 # This will deploy from master. Might want to have a single release branch for a little more control
 deploy:
   - provider: script

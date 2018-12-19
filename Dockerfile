@@ -29,8 +29,8 @@ RUN apk update \
  && ln -s /usr/share/tranquility-distribution-${tranquility_version} /usr/share/tranquility
 
 COPY conf /usr/share/tranquility-distribution-${tranquility_version}/conf
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY start-tranquility.sh /start-tranquility.sh
 
 WORKDIR /usr/share/tranquility
 
-ENTRYPOINT /docker-entrypoint.sh
+ENTRYPOINT /start-tranquility.sh
