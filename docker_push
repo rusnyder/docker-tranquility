@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASE_IMAGE="rusnyder/docker-tranquility"
+BASE_IMAGE="rusnyder/tranquility"
 IMAGE_VERSION="$1"
 
 if [ -z "$IMAGE_VERSION" ]; then
