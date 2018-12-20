@@ -10,7 +10,7 @@ services:
   tranquility:
     image: rusnyder/tranquility
     volumes:
-      - ./conf/tranquility:/etc/tranquility
+      - ../conf/tranquility:/etc/tranquility
     environment:
       TRANQUILITY_CONFIG_FILE: /etc/tranquility/config.json
       TRANQUILITY_PROPERTIES_ZOOKEEPER_CONNECT: zookeeper:2181
