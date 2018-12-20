@@ -36,10 +36,9 @@ script:
   - shellcheck -s bash start-tranquility.sh
   # Spin up the container under test
   - docker-compose -f test/docker-compose.yml up -d tranquility
-  - sleep 5
   - docker-compose -f test/docker-compose.yml ps
   # Check that tranquility is up and listening (smoke test)
-  - docker-compose -f test/docker-compose.yml exec tranquility nc -z tranquility 8200
+  - test/wait-for-it.sh --timeout 60 localhost:8200
 
 after_script:
   - docker-compose down
