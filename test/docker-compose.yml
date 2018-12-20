@@ -1,0 +1,18 @@
+version: "2"
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+  tranquility:
+    image: rusnyder/tranquility
+    volumes:
+      - ./conf/tranquility:/etc/tranquility
+    environment:
+      TRANQUILITY_CONFIG_FILE: /etc/tranquility/config.json
+      TRANQUILITY_PROPERTIES_ZOOKEEPER_CONNECT: zookeeper:2181
+    ports:
+      - 8200:8200

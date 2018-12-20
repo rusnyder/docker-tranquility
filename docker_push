@@ -12,3 +12,6 @@ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 TARGET="$BASE_IMAGE:$IMAGE_VERSION"
 docker tag "$BASE_IMAGE" "$TARGET"
 docker push "$TARGET"
+
+# Hit the image analysys webhook to trigger analysis
+curl -XPOST https://hooks.microbadger.com/images/rusnyder/tranquility/FeM9lf0SWVNiLFVq3jB4CwajxXM=
