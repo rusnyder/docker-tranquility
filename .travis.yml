@@ -38,8 +38,8 @@ script:
   - docker-compose -f test/docker-compose.yml up -d tranquility
   - sleep 5
   - docker-compose -f test/docker-compose.yml ps
-  # Test the container
-  - curl -sSf http://localhost:8200
+  # Check that tranquility is up and listening (smoke test)
+  - docker-compose -f test/docker-compose.yml exec tranquility nc -z localhost 8200
 
 after_script:
   - docker-compose down
