@@ -38,7 +38,7 @@ script:
   - docker-compose -f test/docker-compose.yml up -d tranquility
   - docker-compose -f test/docker-compose.yml ps
   # Check that tranquility is up and listening (smoke test)
-  - test/wait-for-it.sh --timeout 60 localhost:8200
+  - test/wait-for-it.sh -t 60 localhost:8200
 
 after_script:
   - docker-compose down
