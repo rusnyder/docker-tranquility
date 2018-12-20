@@ -37,7 +37,7 @@ script:
   # Spin up the container under test
   - docker-compose -f test/docker-compose.yml up -d tranquility
   - sleep 5
-  - docker-compose ps
+  - docker-compose -f test/docker-compose.yml ps
   # Test the container
   - curl -sSf http://localhost:8200
 
